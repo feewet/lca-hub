@@ -1,8 +1,8 @@
 # Description
 
-The goal of this platform is to help engineers reach consensus about sustainability goals and product lifecycles. Contributors are incentivised to validate lifecycle assessments and share them with the public.
+The goal of this project is to help engineers reach consensus about sustainability goals and product lifecycles. Contributors are incentivised to validate lifecycle assessments and share them with the public.
 
-The basis of this project is to build a bounty system for Life Cycle Assessments (LCA). We can allow for the crowdsourcing of LCAs and reduce the cost and time for sustainability engineers to perform them.
+The basis of this platform is a bounty system for Life Cycle Assessments (LCA). We can allow for the crowdsourcing of LCAs and reduce the cost and time for sustainability engineers to perform them.
 
 ## Life Cycle Assessments (LCA)
 
@@ -22,7 +22,7 @@ We believe the current system to create LCAs is heavily centralized. Both organi
 
 ## Bounty Submission Flow
 
-* 
+* Anyone can upload a project description and
 
 ## LCA Submission Flow
 
