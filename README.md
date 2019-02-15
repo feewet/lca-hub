@@ -14,20 +14,20 @@ We believe the current system to create LCAs is heavily centralized. Both organi
 
 # Spec
 
-## Identity Verification Flow
+### Identity Verification Flow
 
 * Engineers will sign up and have their qualifications and identity verified and linked to their ethereum address. Smart contract maps valid addresses to true
 
 * Verified engineers are able to manually validate LCAs by signing them.
 
-## Bounty Submission Flow
+### Bounty Submission Flow
 
 * Anyone can upload a project description and
 
-## LCA Submission Flow
+### LCA Submission Flow
 
 * Anyone can upload a description
 
-## LCA Approval Flow
+### LCA Approval Flow
 
 * Once an LCA has been verified 3 times, the bounty is paid to the submittor
