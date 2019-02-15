@@ -10,7 +10,7 @@ A Life Cycle Assessment quantifies the environmental impact of a product or serv
 
 The length of LCAs varies on a project-to-project basis, however they are often very straightforward and involve chemical reactions and dimensional analysis. Engineers often use software such as GaBi to assist in creating and streamlining LCAs.
 
-We believe the current system to create LCAs is heavily centralized. Both organizations and engineers can benefit greatly from a decentralized system to draft and verify life cycle assessments. Under the current system, engineers must work through a third party such as a government or corporation in order to complete these reports. By removing the middle men, assesments can be done signifigantly faster at lower cost.
+The current system to create LCAs is heavily centralized. Both organizations and engineers can benefit greatly from a direct system to draft and verify life cycle assessments. Currently, engineers must work through a third party such as a government or corporation in order to complete these reports. By removing the middle men, assesments can be done signifigantly faster at lower cost.
 
 ### Building a Better World
 
@@ -32,7 +32,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 ### Bounty Submission
 
-* Funders can upload a goal and scope definition and attach a bounty.
+* Funders can upload a goal and scope definition and attach a bounty. Funders specify the number of validators required before 
 
 ### LCA Submission
 
@@ -44,7 +44,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 * Verified engineers recieve a portion of the bounty to read and approve LCAs.
 
-* Once an LCA has been verified 3 times, the remaining bounty is paid to the submittor and the LCA is considered valid.
+* Once an LCA has been verified enough times, the remaining bounty is paid to the submittor and the LCA is considered valid.
 
 * Valid LCAs are posted publically on ipfs and made available through a website.
 
