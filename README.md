@@ -16,6 +16,10 @@ We believe the current system to create LCAs is heavily centralized. Both organi
 
 An example use case for this platform would be to allow small businesses to analyze the carbon footprint of their service at a very low cost. Additionally, they could use assessments to optimize their environmental impact and advertise their low impact to consumers as a competative advantage.
 
+College engineering professors are great contenders to become validators. Professors are generally committed to research and development of progressive technology to improve sustainability. In addition, they are generally qualified to audit and validate LCAs.
+
+On top of that, college students are great contenders to write and submnit LCAs. Creating these reports is a standard task for students studying engineering. Even if the reports are done incorrectly or poorly, they can always be rejected and a new contributor selected to fill a bounty.
+
 # Spec
 
 The platform will be built on an Ethereum dApp using IPFS for decentralized hosting.
@@ -28,7 +32,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 ### Bounty Submission
 
-* Funders can upload a goal and scope definition and attach a bounty. 
+* Funders can upload a goal and scope definition and attach a bounty.
 
 ### LCA Submission
 
@@ -45,6 +49,10 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 * Valid LCAs are posted publically on ipfs and made available through a website.
 
 # Future Considerations
+
+### Incentive Structure
+
+It's important how much of the bounty goes to the LCA submittor and how much goes to the validators. If the submitter gets paid too little, nobody will submit LCAs. If the validators get paid too little, nobody will validate.
 
 ### Dispute Process
 
