@@ -26,7 +26,7 @@ const LCAs = () => (
     <h3 className={titleClasses()}>Verified</h3>
     <hr />
     <Row className={rowClasses()}>
-      <Col>
+      <Col xs={3}>
         {LCAItem(mockLCAs[3].address, mockLCAs[3].verified)}
         {LCAItem(mockLCAs[4].address, mockLCAs[4].verified)}
         {LCAItem(mockLCAs[5].address, mockLCAs[5].verified)}
