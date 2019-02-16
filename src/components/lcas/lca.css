@@ -17,11 +17,15 @@
 }
 
 .Address {
-
 }
 
-.Status {
+.StatusVerified {
   background-color: red;
+  width: 25%;
+}
+
+.StatusUnverified {
+  background-color: #3d9b34;
   width: 25%;
 }
 

@@ -7,7 +7,9 @@ const LCAClasses = () => `${LCAStyle.lca}`;
 
 const buttonClasses = () => `${LCAStyle.Button}`;
 
-const statusClasses = () => `${LCAStyle.Status}`;
+const statusClasses = v => {
+  return v ? `${LCAStyle.StatusVerified}` : `${LCAStyle.StatusUnverified}`;
+};
 
 class LCA extends React.Component {
   constructor(props) {
@@ -18,12 +20,10 @@ class LCA extends React.Component {
 
   render() {
     const { verified, address } = this.state;
-    const color = verified ? 'green' : 'red';
-    const style = () => ({ color });
     return (
       <div className={LCAClasses()}>
-        <Button className={buttonClasses()} style={style()}>
-          <div className={statusClasses()}>&nbsp;</div>
+        <Button className={buttonClasses()}>
+          <div className={statusClasses(verified)}>&nbsp;</div>
           <div>{address}</div>
         </Button>
       </div>
