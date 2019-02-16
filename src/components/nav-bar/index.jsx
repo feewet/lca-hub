@@ -1,11 +1,15 @@
 import React from 'react';
 import navStyles from './navBar.css';
 
-const navBarStyle = () => `${navStyles.navBar}`;
+const navBarClasses = () => `${navStyles.navBar}`;
+
+const titleClasses = () => `${navStyles.Title}`;
 
 const navBar = () => (
-  <div className={navBarStyle()}>
-    <span>LCA Sound System</span>
+  <div className={navBarClasses()}>
+    <div>
+      <span className={titleClasses()}>LCA Sound System</span>
+    </div>
   </div>
 );
 
