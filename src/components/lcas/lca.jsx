@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import LCAStyle from './lca.css';
 
-const LCAClasses = () => `${LCAStyle.lca}`;
-
 const buttonClasses = () => `${LCAStyle.Button}`;
 
 const statusClasses = v =>
@@ -20,12 +18,10 @@ class LCA extends React.Component {
   render() {
     const { verified, address } = this.state;
     return (
-      <div className={LCAClasses()}>
-        <Button className={buttonClasses()}>
-          <div className={statusClasses(verified)}>&nbsp;</div>
-          <div>{address}</div>
-        </Button>
-      </div>
+      <Button className={buttonClasses()}>
+        <div className={statusClasses(verified)}>&nbsp;</div>
+        <div>{address}</div>
+      </Button>
     );
   }
 }

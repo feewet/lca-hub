@@ -1,41 +1,35 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import LCA from './lca';
 import mockLCAs from './mock-lcas';
 import LCAStyles from './lca.css';
+
+const lcasClasses = () => `${LCAStyles.LCAs}`;
 
 const rowClasses = () => `${LCAStyles.Row}`;
 
 const titleClasses = () => `${LCAStyles.Title}`;
 
-const LCAItem = (addr, v) => (
-  <th>
-    <LCA address={addr} verified={v} />
-  </th>
-);
+const LCAItem = (addr, v) => <LCA address={addr} verified={v} />;
 
 const LCAs = () => (
-  <div>
+  <div className={lcasClasses()}>
     <h3 className={titleClasses()}>Unverified</h3>
-    <table style={{ width: '100%' }}>
-      <tbody>
-        <tr className={rowClasses()}>
-          {LCAItem(mockLCAs[0].address, mockLCAs[0].verified)}
-          {LCAItem(mockLCAs[1].address, mockLCAs[1].verified)}
-          {LCAItem(mockLCAs[2].address, mockLCAs[2].verified)}
-        </tr>
-        <tr />
-      </tbody>
-    </table>
+    <Row className={rowClasses()}>
+      <Col xs={3}>
+        {LCAItem(mockLCAs[0].address, mockLCAs[0].verified)}
+        {LCAItem(mockLCAs[1].address, mockLCAs[1].verified)}
+        {LCAItem(mockLCAs[2].address, mockLCAs[2].verified)}
+      </Col>
+    </Row>
     <h3 className={titleClasses()}>Verified</h3>
-    <table style={{ width: '100%' }}>
-      <tbody>
-        <tr>
-          {LCAItem(mockLCAs[3].address, mockLCAs[3].verified)}
-          {LCAItem(mockLCAs[4].address, mockLCAs[4].verified)}
-          {LCAItem(mockLCAs[5].address, mockLCAs[5].verified)}
-        </tr>
-      </tbody>
-    </table>
+    <Row className={rowClasses()}>
+      <Col>
+        {LCAItem(mockLCAs[3].address, mockLCAs[3].verified)}
+        {LCAItem(mockLCAs[4].address, mockLCAs[4].verified)}
+        {LCAItem(mockLCAs[5].address, mockLCAs[5].verified)}
+      </Col>
+    </Row>
   </div>
 );
 

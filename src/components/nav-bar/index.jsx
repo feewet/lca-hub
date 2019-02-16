@@ -48,8 +48,6 @@ class NavBar extends React.Component {
   }
 }
 
-//           <span className={titleClasses()}>LCA Flight</span>
-
 export default NavBar;
 
 NavBar.propTypes = {
