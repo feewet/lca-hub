@@ -7,14 +7,14 @@
 }
 
 .Title {
-  position: relative;
+  position: absolute;
   color: whitesmoke;
   letter-spacing: 0.4em;
   font-size: 1.5em;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
-  margin-left: 3rem;
-  bottom: 0.9em;
+  right: 1em;
+  top: 0.75em;
 }
 
 .MenuContainer {
