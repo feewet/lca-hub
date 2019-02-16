@@ -6,6 +6,14 @@
 .Button {
   border-radius: 0.25em;
   height: 10rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.Row {
+  position: relative;
+  bottom: 10px;
 }
 
 .Address {
@@ -14,4 +22,14 @@
 
 .Status {
   background-color: red;
+  width: 25%;
+}
+
+.Title {
+  color: whitesmoke;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  margin: 1rem;
+  padding-top: 2rem;
 }

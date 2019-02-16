@@ -23,7 +23,7 @@ class LCA extends React.Component {
     return (
       <div className={LCAClasses()}>
         <Button className={buttonClasses()} style={style()}>
-          <div className={statusClasses()} />
+          <div className={statusClasses()}>&nbsp;</div>
           <div>{address}</div>
         </Button>
       </div>
