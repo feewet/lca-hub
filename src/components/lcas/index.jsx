@@ -4,7 +4,7 @@ import LCA from './lca';
 import mockLCAs from './mock-lcas';
 import LCAStyles from './lca.css';
 
-const lcasClasses = () => `${LCAStyles.LCAs}`;
+const LCAsClasses = () => `${LCAStyles.LCAs}`;
 
 const rowClasses = () => `${LCAStyles.Row}`;
 
@@ -13,7 +13,7 @@ const titleClasses = () => `${LCAStyles.Title}`;
 const LCAItem = (addr, v) => <LCA address={addr} verified={v} />;
 
 const LCAs = () => (
-  <div className={lcasClasses()}>
+  <div className={LCAsClasses()}>
     <h3 className={titleClasses()}>Unverified</h3>
     <Row className={rowClasses()}>
       <Col xs={3}>
