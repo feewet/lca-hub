@@ -1,3 +1,17 @@
 .lca {
+  margin-top: 2rem;
   height: 8rem;
+}
+
+.Button {
+  border-radius: 0.25em;
+  height: 10rem;
+}
+
+.Address {
+
+}
+
+.Status {
+  background-color: red;
 }
