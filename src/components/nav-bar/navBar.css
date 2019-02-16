@@ -1,9 +1,11 @@
 .navBar {
-  background-color: orange;
+  background-color: #3d9b34;
   height: 4rem;
 }
 
 .Title {
+  color: whitesmoke;
+  font-size: 3em;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   margin: 1rem;

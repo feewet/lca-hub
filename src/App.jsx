@@ -1,5 +1,6 @@
 import React from 'react';
 // import { Route, Switch } from 'react-router-dom';
+import Style from '../src/styles.css';
 import LCAs from 'components/lcas';
 import NavBar from 'components/nav-bar';
 import { hot } from 'react-hot-loader';

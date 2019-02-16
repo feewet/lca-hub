@@ -8,7 +8,7 @@ const titleClasses = () => `${navStyles.Title}`;
 const navBar = () => (
   <div className={navBarClasses()}>
     <div>
-      <span className={titleClasses()}>LCA Sound System</span>
+      <span className={titleClasses()}>LCA Flight</span>
     </div>
   </div>
 );
