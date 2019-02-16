@@ -15,6 +15,7 @@ const LCAItem = (addr, v) => <LCA address={addr} verified={v} />;
 const LCAs = () => (
   <div className={LCAsClasses()}>
     <h3 className={titleClasses()}>Unverified</h3>
+    <hr />
     <Row className={rowClasses()}>
       <Col xs={3}>
         {LCAItem(mockLCAs[0].address, mockLCAs[0].verified)}
@@ -23,6 +24,7 @@ const LCAs = () => (
       </Col>
     </Row>
     <h3 className={titleClasses()}>Verified</h3>
+    <hr />
     <Row className={rowClasses()}>
       <Col>
         {LCAItem(mockLCAs[3].address, mockLCAs[3].verified)}
