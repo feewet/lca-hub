@@ -20,6 +20,7 @@
     "npm": ">=3"
   },
   "dependencies": {
+    "create-react-class": "^15.6.3",
     "lodash": "4.17.11",
     "npm-check-updates": "^2.14.2",
     "pdfobject": "^2.1.1",
@@ -29,7 +30,8 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "16.6.3",
     "react-hot-loader": "4.3.12",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "react-table-view": "^1.0.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
