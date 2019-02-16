@@ -17,7 +17,27 @@
   bottom: 0.9em;
 }
 
-.Menu {
+.MenuContainer {
   padding-top: 1.5rem;
   padding-left: 1rem;
+}
+
+.Menu {
+  cursor: pointer;
+}
+
+.OpenMenu {
+  top: 2rem;
+  transition: 0.3s ease;
+  position: relative;
+  background-color: whitesmoke;
+  width: 100%;
+}
+
+.Link {
+  height: 10rem;
+  color: #3d9b34;
+  margin: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
 }
