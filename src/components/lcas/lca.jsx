@@ -7,9 +7,8 @@ const LCAClasses = () => `${LCAStyle.lca}`;
 
 const buttonClasses = () => `${LCAStyle.Button}`;
 
-const statusClasses = v => {
-  return v ? `${LCAStyle.StatusVerified}` : `${LCAStyle.StatusUnverified}`;
-};
+const statusClasses = v =>
+  v ? `${LCAStyle.StatusVerified}` : `${LCAStyle.StatusUnverified}`;
 
 class LCA extends React.Component {
   constructor(props) {

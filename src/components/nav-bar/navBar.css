@@ -1,13 +1,23 @@
 .navBar {
+  width: 100%;
+  display: inline-block;
   background-color: #3d9b34;
   height: 4rem;
   border-radius: 0.25em;
 }
 
 .Title {
+  position: relative;
   color: whitesmoke;
-  font-size: 3em;
+  letter-spacing: 0.4em;
+  font-size: 1.5em;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
-  margin: 1rem;
+  margin-left: 3rem;
+  bottom: 0.9em;
+}
+
+.Menu {
+  padding-top: 1.5rem;
+  padding-left: 1rem;
 }

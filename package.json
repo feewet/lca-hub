@@ -22,6 +22,7 @@
   "dependencies": {
     "create-react-class": "^15.6.3",
     "lodash": "4.17.11",
+    "mdbreact": "^4.10.0",
     "npm-check-updates": "^2.14.2",
     "pdfobject": "^2.1.1",
     "prop-types": "15.6.2",
@@ -29,6 +30,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "16.6.3",
+    "react-hamburger-menu": "^1.1.1",
     "react-hot-loader": "4.3.12",
     "react-router-dom": "^4.3.1",
     "react-table-view": "^1.0.0"

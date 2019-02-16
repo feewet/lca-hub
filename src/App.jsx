@@ -4,7 +4,7 @@ import LCAs from 'components/lcas';
 import NavBar from 'components/nav-bar';
 import { hot } from 'react-hot-loader';
 // noinspection ES6UnusedImports
-import Style from '../src/styles.css';
+import Style from './styles.css';
 
 const App = () => (
   <div>
