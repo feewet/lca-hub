@@ -2,3 +2,11 @@ body {
   margin: auto;
   background-color: black;
 }
+
+.LCAGreen {
+  color: #3d9b34;
+}
+
+.LCAGreenBackground {
+  background-color: #3d9b34;
+}

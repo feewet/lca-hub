@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import HamburgerMenu from 'react-hamburger-menu/dist/react-hamburger-menu.min';
 import navStyles from './navBar.css';
+import styles from '../../styles.css';
 
-const navBarClasses = () => `${navStyles.navBar}`;
+const navBarClasses = () => `${navStyles.navBar} ${styles.LCAGreenBackground}`;
 
 const titleClasses = () => `${navStyles.Title}`;
 
@@ -14,7 +15,7 @@ const menuClasses = () => `${navStyles.Menu}`;
 
 const openMenuClasses = () => `${navStyles.OpenMenu}`;
 
-const linkClasses = () => `${navStyles.Link}`;
+const linkClasses = () => `${navStyles.Link} ${styles.LCAGreen}`;
 
 const MenuButtons = () => (
   <span className={openMenuClasses()}>
@@ -29,12 +30,13 @@ class NavBar extends React.Component {
     super(props);
     const open = false;
     this.state = { open };
-    this.handleClick = this.handleClick.bind(this);
+    this.onHandleClick = this.onHandleClick.bind(this);
   }
 
-  handleClick() {
+  onHandleClick() {
+    const { open } = this.state;
     this.setState({
-      open: !this.state.open,
+      open: !open,
     });
   }
 
@@ -47,7 +49,7 @@ class NavBar extends React.Component {
           <span className={menuClasses()}>
             <HamburgerMenu
               isOpen={open}
-              menuClicked={this.handleClick}
+              menuClicked={this.onHandleClick}
               width={18}
               height={15}
               strokeWidth={2.25}

@@ -1,7 +1,6 @@
 .navBar {
   width: 100%;
   display: inline-block;
-  background-color: #3d9b34;
   height: 4rem;
   border-radius: 0.25em;
 }
@@ -27,16 +26,17 @@
 }
 
 .OpenMenu {
-  top: 2rem;
-  transition: 0.3s ease;
+  top: 3rem;
+  padding: 1em;
+  border-radius: 2%;
   position: relative;
   background-color: whitesmoke;
   width: 100%;
 }
 
 .Link {
+  font-weight: bold;
   height: 10rem;
-  color: #3d9b34;
   margin: 2rem;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
