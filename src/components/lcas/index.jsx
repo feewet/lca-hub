@@ -9,12 +9,11 @@ const LCAs = () => (
         <th>
           <LCA address={mockLCAs[0].address} />
         </th>
-      </tr>
-      <tr>
         <th>
           <LCA address={mockLCAs[1].address} />
         </th>
       </tr>
+      <tr />
     </tbody>
   </table>
 );
