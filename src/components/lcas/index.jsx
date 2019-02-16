@@ -23,7 +23,7 @@ const LCAs = () => (
         {LCAItem(mockLCAs[2].address, mockLCAs[2].verified)}
       </Col>
     </Row>
-    <h3 className={titleClasses()}>Validated/h3>
+    <h3 className={titleClasses()}>Validated</h3>
     <hr />
     <Row className={rowClasses()}>
       <Col xs={3}>
