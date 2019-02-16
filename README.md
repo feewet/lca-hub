@@ -18,7 +18,7 @@ An example use case for this platform would be to allow small businesses to anal
 
 College engineering professors are great contenders to become validators. Professors are generally committed to research and development of progressive technology to improve sustainability. In addition, they are generally qualified to audit and validate LCAs.
 
-On top of that, college students are great contenders to write and submnit LCAs. Creating these reports is a standard task for students studying engineering. Even if the reports are done incorrectly or poorly, they can always be rejected and a new contributor selected to fill a bounty.
+On top of that, college students are great contenders to write and submit LCAs. Creating these reports is a standard task for students studying engineering. Even if the reports are done incorrectly or poorly, they can always be rejected and a new contributor selected to fill a bounty.
 
 # Spec
 
@@ -44,15 +44,15 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 * Verified engineers recieve a portion of the bounty to read and approve LCAs.
 
-* Once an LCA has been verified enough times, the remaining bounty is paid to the submittor and the LCA is considered valid.
+* Once an LCA has been verified enough times, the remaining bounty is paid to the submitter and the LCA is considered valid.
 
-* Valid LCAs are posted publically on ipfs and made available through a website.
+* Valid LCAs are posted publicly on ipfs and made available through a website.
 
 # Future Considerations
 
 ### Incentive Structure
 
-It's important how much of the bounty goes to the LCA submittor and how much goes to the validators. If the submitter gets paid too little, nobody will submit LCAs. If the validators get paid too little, nobody will validate.
+It's important how much of the bounty goes to the LCA submitter and how much goes to the validators. If the submitter gets paid too little, nobody will submit LCAs. If the validators get paid too little, nobody will validate.
 
 ### Dispute Process
 
@@ -64,15 +64,15 @@ Inherently, the engineer verification will need to be centralized. An administra
 
 ### Privacy
 
-Some groups might want their LCAs to be done without posting data to the public to maintain competative advatage. This might be out of the scope for this project, however the ability to privately crowdsource LCAs is a very useful feature for corporations.
+Some groups might want their LCAs to be done without posting data to the public to maintain competitive advantage. This might be out of the scope for this project, however the ability to privately crowdsource LCAs is a very useful feature for corporations.
 
 ### Assumptions and LCA Re-evalutation
 
-Assumptions and lifecycles change as new research becomes available. Creating an incentive structure for people to improve exisiting LCAs would help engineers find more accurate results thus increasing our knowledge of the economic impact for products and services.
+Assumptions and lifecycles change as new research becomes available. Creating an incentive structure for people to improve existing LCAs would help engineers find more accurate results thus increasing our knowledge of the economic impact for products and services.
 
 ### Formalizing Provable LCAs
 
-Because LCAs are based on math and chemical equations, there is a way to formulate this math into a proof which can be verified. Many engineers use software such as GBai (http://www.gabi-software.com/america/index/) to create models, therefore compatability with such software would be beneficial. Furthermore, formalizing proofs of LCA correctness and verifying them on the Ethereum blockchain would speed up the LCA creation process.
+Because LCAs are based on math and chemical equations, there is a way to formulate this math into a proof which can be verified. Many engineers use software such as GBai (http://www.gabi-software.com/america/index/) to create models, therefore compatibility with such software would be beneficial. Furthermore, formalizing proofs of LCA correctness and verifying them on the Ethereum blockchain would speed up the LCA creation process.
 
 ### Prediction Markets
 
