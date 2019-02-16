@@ -4,6 +4,7 @@
 }
 
 .Button {
+  background-color: whitesmoke;
   border-radius: 0.25em;
   height: 10rem;
   border: 0;
@@ -14,9 +15,6 @@
 .Row {
   position: relative;
   bottom: 10px;
-}
-
-.Address {
 }
 
 .StatusVerified {

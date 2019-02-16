@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LCAs from 'components/lcas';
 import NavBar from 'components/nav-bar';
 import { hot } from 'react-hot-loader';
@@ -9,7 +9,9 @@ import Style from '../src/styles.css';
 const App = () => (
   <div>
     <NavBar />
-    <LCAs />
+    <Switch>
+      <Route path="/" exact component={LCAs} />
+    </Switch>
   </div>
 );
 
