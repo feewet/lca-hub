@@ -5,6 +5,7 @@
 }
 
 .Button {
+  width: 10rem;
   position: relative;
   margin: 2rem 3rem;
   background-color: whitesmoke;
