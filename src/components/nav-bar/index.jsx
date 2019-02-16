@@ -28,7 +28,7 @@ const MenuButtons = () => (
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    const open = false;
+    const { open } = props;
     this.state = { open };
     this.onHandleClick = this.onHandleClick.bind(this);
   }

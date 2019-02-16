@@ -10,7 +10,17 @@ const rowClasses = () => `${LCAStyles.Row}`;
 
 const titleClasses = () => `${LCAStyles.Title}`;
 
-const LCAItem = (addr, v) => <LCA address={addr} verified={v} />;
+const LCAItem = i => {
+  const lca = mockLCAs[i];
+  return (
+    <LCA
+      address={lca.address}
+      verified={lca.verified}
+      owner={lca.owner}
+      timeEstimate={lca.timeEstimate}
+    />
+  );
+};
 
 const LCAs = () => (
   <div className={LCAsClasses()}>
@@ -18,18 +28,18 @@ const LCAs = () => (
     <hr />
     <Row className={rowClasses()}>
       <Col xs={3}>
-        {LCAItem(mockLCAs[0].address, mockLCAs[0].verified)}
-        {LCAItem(mockLCAs[1].address, mockLCAs[1].verified)}
-        {LCAItem(mockLCAs[2].address, mockLCAs[2].verified)}
+        {LCAItem(0)}
+        {LCAItem(1)}
+        {LCAItem(2)}
       </Col>
     </Row>
     <h3 className={titleClasses()}>Validated</h3>
     <hr />
     <Row className={rowClasses()}>
       <Col xs={3}>
-        {LCAItem(mockLCAs[3].address, mockLCAs[3].verified)}
-        {LCAItem(mockLCAs[4].address, mockLCAs[4].verified)}
-        {LCAItem(mockLCAs[5].address, mockLCAs[5].verified)}
+        {LCAItem(3)}
+        {LCAItem(4)}
+        {LCAItem(5)}
       </Col>
     </Row>
   </div>
