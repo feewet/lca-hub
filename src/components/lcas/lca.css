@@ -12,6 +12,10 @@
   cursor: pointer;
 }
 
+.Button:hover {
+  opacity: 0.25;
+}
+
 .Row {
   position: relative;
   bottom: 10px;
