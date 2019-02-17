@@ -1,8 +1,16 @@
-pragma solidity ^0.5.0
+pragma solidity ^0.5.0;
 
 contract FlightFund {
 
-	var bytes32[] reports;
+	event Certify(address validator);
+	event RevokeCertification(address validator);
+	event ValidateReport(address validator, bytes32 report);
+	event DisputeReport(address validator, bytes32 report);
+	event CreateReportBounty();
+	event SubmitReport();
+	event RemoveReport(address addr, bytes32 report);
+	event SetBounty();
+	event PayBounty(address addr, address[] validators, bytes32 report);
 
 	// Represents a single validator.
 	struct Validator {
@@ -10,16 +18,14 @@ contract FlightFund {
 		uint weight; // validator weight
 	}
 
-	// represents a report
+	// Report Structure
 	struct Report {
 		bytes32 reportHash; // hash of report on ipfs
-		address creator;
+		address creator; // creator (owner)
 		bool isValid;
-		uint8 requiredValidators;
-		mapping (address -> uint8) validators;
-		mapping (address -> uint8) refutors;
-		//address[] validators; // array of validators
-		//address[] refuters; // array of refutors
+		uint8 numRequiredValidators;
+		address[] validators;
+		address[] refuters;
 	}
 
 	// mapping of ipfs document to reports
@@ -30,112 +36,96 @@ contract FlightFund {
 
 	// mapping from addresses to validators
 	mapping(address => Validator) public validators;
-
+	
 	// Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
-    function certify(address validator) public {
-        // check if chairperson is giving right to vote
-        require(
-            msg.sender == chairperson,
-            "Only chairperson can give right to validate."
-        );
-        require(
-            validators[validator] == 0,
-            "The voter already validated."
-        );
-        //require(
-        //	validators[validator].weight == 0,
-        //	"Validator already validated"
-        //);
-        // Set weight to 1
+    function certify(address validator) public onlyChairperson() {
+		require(validators[validator] == 0, "This address is already validated.");
         validators[validator].weight = 1;
+        emit Certify(validator);
     }
-
 
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
-    function revokeCertification(address validator) public {
-        // check if chairperson is revoking right to vote
-        require(
-            msg.sender == chairperson,
-            "Only chairperson can revoke certification."
-        );
-        require(
-            validators[validator].validated,
-            "This address is not authorized to certify.");
-        require(validators[validator].weight == 1);
+    function revokeCertification(address validator) public onlyChairperson() {
+        require(validators[validator].weight == 1); // validatorExists
 
         delete validators[validator]; // should work, maybe set weight to 0
+        emit RevokeCertification(validator);
     }
 
     // takes in the hash of a document and allows signing
-	function validateReport(address addr, bytes32 report) public returns (uint8) {
-		require (
-			validators[addr] > 0,
-			"This address is not authorized to validate");
-		require (
-			validators[addr].weight > 0 ,
-			"Validator not qualified to sign");
-		require (
-			reports[report] > 0, // might be zero?
-			"Report does not exist");
+	function validateReport(address addr, bytes32 report) public 
+		onlyValidator(addr)
+		reportExists(report)
+	{
+		uint size = eports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].validators[addr] = validators[addr].weight;
+		reports[report].validators[size] = validators[size].weight;
 		// return validators length
-		return reports[report].validators.length;
+		emit ValidateReport(addr, report);
 	}
 
 	// takes in an address and the hash of a document and adds a dispute to the report
-	function disputeReport(address addr, bytes32 report) public returns (uint8) {
-		require (
-			validators[addr] > 0,
-			"This address is not authorized to validate"
-			);
-		require (
-			validators[addr].weight > 0 ,
-			"Validator not qualified to sign"
-			);
-		require (
-			reports[report] > 0,
-			"Report does not exist"
-			);
+	function disputeReport(address addr, bytes32 report) public 
+		onlyValidator(addr)
+		reportExists(report)
+	{
 		// store validator address -> weight mapping in report
 		reports[report].refuters[addr] = validators[addr].weight;
-		// return validators length
-		return reports[report].refuters.length;
+		emit DisputeReport(addr, report);
 	}
 
-	// takes an address, report hash, and bounty and locks
-	function createReportRequest(address creator, bytes32 report, uint8 bounty) public returns (bool) {
-		// charge bounty
-		return false;
+	// takes an address, report hash, and bounty and locks (permissionless)
+	function createReportBounty(address creator, bytes32 report, uint8 bounty) public {
+		// lock bounty in smart contract
+		
 	}
 
-	function submitReport(address submittor, bytes32 report) {
-		Report newReport;
-		newReport.reportHash = report; // hash of report on ipfs
-		address creator;
-		bool isValid;
-		uint8 requiredValidators;
-		address[] validators; // array of validators
-		address[] refuters; // array of refutors
+	// Submit a report (permissionless)
+	function submitReport(address submittor, bytes32 reportHash, uint8 _numRequiredValidators) public {
+		bytes32 reportHash = reportHash;
+		address creator = submittor;
+		bool isValid = false;
+		uint8 numRequiredValidators = _numRequiredValidators;
+		reports[report] = Report(reportHash, creator, isValid, numRequiredValidators);
+		emit SubmitReport(reportHash, creator, isValid, numRequiredValidators);
 	}
 
-	// 
+	// Remove report and release bounty
 	function removeReport(address addr, bytes32 report) public {
-		require (
-			reports[report] > 0,
-			"Invalid report hash"
-			);
-		require (
-			reports[report].creator == addr || addr == chairperson,
-			"Only report creator or admin can delete reports"
-			);
-		// code here
+		require (reports[report].creator == addr || addr == chairperson,
+			"Only report creator or admin can delete reports");
+		delete reports[report];
+		// !!!!! RELEASE BOUNTY !!!!!!
+		emit RemoveReport(addr, report);
 	}
 
 	// pay bounty to report submittor and validators
 	function payBounty(address addr, bytes32 report) public {
-		// code here
+		require(reports[report].isValid == false, "Report already valid");
+		address[] paidValidators = reports[report].validators;
+
+		// !!! PAY BOUNTY !!!
+		reports[report].isValid = true;
+		emit PayBounty(addr, reports[report].validators, report);
+	}
+
+	// only Chairperson
+	modifier onlyChairperson() {
+		require(msg.sender == chairperson, 
+			"Only chairperson can give right to validate.");
+		_;
+	}
+
+	modifier onlyValidator(uint8 addr) {
+		require(validators[addr] > 0, "This address is not authorized to validate");
+		require(validators[addr].weight > 0, "Validator not qualified to sign");
+		_;
+	}
+
+	modifier reportExists(bytes32 report) {
+		require (reports[report] > 0, "Invalid report hash");
+		_;
 	}
 }
