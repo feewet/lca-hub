@@ -19,8 +19,8 @@ const linkClasses = () => `${navStyles.Link} ${styles.LCAGreen}`;
 
 const MenuButtons = () => (
   <span className={openMenuClasses()}>
-    <Link className={linkClasses()} to="/request">
-      Request
+    <Link className={linkClasses()} to="/create-bounty">
+      Create Bounty
     </Link>
   </span>
 );
