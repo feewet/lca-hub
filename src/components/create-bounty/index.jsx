@@ -95,7 +95,7 @@ class DifficultySelector extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { selected: 0 };
+    this.state = { selected: 1 };
   }
 
   handleChange(s) {
@@ -158,7 +158,7 @@ const CBStageThree = ({ progress }) => (
     </p>
     <form>
       <div style={{ marginTop: '2rem' }}>Amount (DAI)&nbsp;&nbsp;</div>
-      <div>
+      <div style={{ marginTop: '0.25rem' }}>
         <input
           id="reward"
           className={createBountyStyles.AmountInput}
@@ -169,6 +169,8 @@ const CBStageThree = ({ progress }) => (
     </form>
     <div style={{ marginTop: '2rem' }}>
       <span>Difficulty&nbsp;&nbsp;</span>
+    </div>
+    <div style={{ marginTop: '0.25rem' }}>
       <DifficultySelector />
     </div>
     <p style={{ marginTop: '2rem' }}>

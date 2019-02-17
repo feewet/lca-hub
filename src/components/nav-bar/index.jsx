@@ -45,7 +45,10 @@ class NavBar extends React.Component {
     const openedMenu = open ? <MenuButtons /> : <span />;
     return (
       <div className={navBarClasses()}>
-        <div className={menuContainerClasses()}>
+        <div
+          className={menuContainerClasses()}
+          style={{ marginBottom: '2rem' }}
+        >
           <span className={menuClasses()}>
             <HamburgerMenu
               isOpen={open}
@@ -54,7 +57,7 @@ class NavBar extends React.Component {
               height={15}
               strokeWidth={2.25}
               rotate={0}
-              color="whitesmoke"
+              color="black"
               borderRadius={0}
               animationDuration={0.5}
             />
@@ -62,6 +65,7 @@ class NavBar extends React.Component {
           {openedMenu}
           <span className={titleClasses()}>LCA Flight</span>
         </div>
+        <hr />
       </div>
     );
   }

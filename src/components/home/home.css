@@ -7,7 +7,7 @@
   line-height: normal;
   font-size: 20px;
   text-align: justify;
-  color: whitesmoke;
+  color: black;
 }
 
 .Heading {
@@ -18,22 +18,26 @@
   font-family: SF Pro Display, sans-serif;
   line-height: normal;
   font-size: 26px;
-  color: whitesmoke;
+  color: black;
 }
 
 .Link {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  transition: .3s ease;
   position: relative;
   padding: 2rem;
   top: 12rem;
   text-decoration: none;
   cursor: pointer;
   outline: 0;
-  background-color: white;
+  background-color: lightgray;
+  border-radius: 2%;
+  border-color: black;
   color: black;
 }
 
 .Link:hover {
-  background-color: #3d9b34;
+  opacity: 75%;
+  background-color: whitesmoke;
 }
