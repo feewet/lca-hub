@@ -1,0 +1,43 @@
+.navBar {
+  width: 100%;
+  display: inline-block;
+  height: 4rem;
+  border-radius: 0.25em;
+}
+
+.Title {
+  position: absolute;
+  color: whitesmoke;
+  letter-spacing: 0.4em;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  right: 1em;
+  top: 0.75em;
+}
+
+.MenuContainer {
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+}
+
+.Menu {
+  cursor: pointer;
+}
+
+.OpenMenu {
+  top: 3rem;
+  padding: 1em;
+  border-radius: 2%;
+  position: relative;
+  background-color: whitesmoke;
+  width: 100%;
+}
+
+.Link {
+  font-weight: bold;
+  height: 10rem;
+  margin: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}

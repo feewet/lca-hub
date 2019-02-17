@@ -1,0 +1,47 @@
+.LCAs {
+  position: relative;
+  width: 75%;
+  transform: translateX(25%);
+}
+
+.Button {
+  width: 10rem;
+  position: relative;
+  margin: 2rem 3rem;
+  background-color: whitesmoke;
+  border-radius: 2.45em;
+  height: 10rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.Button:hover {
+  opacity: 0.25;
+}
+
+.Row {
+  position: relative;
+  bottom: 10px;
+  width: 75%;
+  margin: auto;
+}
+
+.StatusVerified {
+  background-color: red;
+  width: 25%;
+}
+
+.StatusUnverified {
+  background-color: #3d9b34;
+  width: 25%;
+}
+
+.Title {
+  color: whitesmoke;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  margin: 1rem;
+  padding-top: 2rem;
+}
