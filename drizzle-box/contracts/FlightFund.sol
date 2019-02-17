@@ -7,22 +7,22 @@ contract FlightFund {
 	event ValidateReport(address validator, bytes32 report);
 	event DisputeReport(address validator, bytes32 report);
 	event CreateReportBounty();
-	event SubmitReport();
+	event SubmitReport(address submittor, bytes32 reportHash, bool isValid, uint8 _numRequiredValidators);
 	event RemoveReport(address addr, bytes32 report);
 	event SetBounty();
 	event PayBounty(address addr, address[] validators, bytes32 report);
 
 	// Represents a single validator.
 	struct Validator {
-		address validator; // validator address
+		address addr; // validator address
 		uint weight; // validator weight
 	}
 
 	// Report Structure
 	struct Report {
 		// ------ADD NAME------
-		bytes32 reportHash; // hash of report on ipfs
 		address creator; // creator (owner)
+		bytes32 reportHash; // hash of report on ipfs
 		bool isValid;
 		uint8 numRequiredValidators;
 		address[] validators;
@@ -41,7 +41,7 @@ contract FlightFund {
 	// Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function certify(address validator) public onlyChairperson() {
-		require(validators[validator] != 0, "This address is already validated.");
+		//require(validators[validator] == address(0x0), "This address is already validated.");
         validators[validator].weight = 1;
         emit Certify(validator);
     }
@@ -62,7 +62,7 @@ contract FlightFund {
 	{
 		uint256 size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].validators[size] = validators[addr].weight;
+		reports[report].validators[size] = addr;
 		// return validators length
 		emit ValidateReport(addr, report);
 	}
@@ -74,7 +74,7 @@ contract FlightFund {
 	{
 		uint256 size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].refuters[size] = validators[addr].weight;
+		reports[report].refuters[size] = addr;
 		emit DisputeReport(addr, report);
 	}
 
@@ -90,8 +90,9 @@ contract FlightFund {
 		address creator = submittor;
 		bool isValid = false;
 		uint8 numRequiredValidators = _numRequiredValidators;
-		reports[reportHash] = Report(reportHash, creator, isValid, numRequiredValidators);
-		emit SubmitReport(reportHash, creator, isValid, numRequiredValidators);
+		reports[reportHash] = Report(creator, reportHash, isValid, 
+			numRequiredValidators, new address[](8), new address[](8));
+		emit SubmitReport(creator, reportHash, isValid, numRequiredValidators);
 	}
 
 	// Remove report and release bounty
@@ -107,7 +108,7 @@ contract FlightFund {
 	function payBounty(address addr, bytes32 report) public {
 		require(reports[report].isValid == false, "Report already valid");
 		//for (reports[report].validators;
-
+		
 		// !!! PAY BOUNTY !!!
 		reports[report].isValid = true;
 		emit PayBounty(addr, reports[report].validators, report);
@@ -121,7 +122,7 @@ contract FlightFund {
 	}
 
 	modifier onlyValidator(address addr) {
-		require(validators[addr] != address(0x0), "This address is not authorized to validate");
+		require(validators[addr].addr != address(0x0), "This address is not authorized to validate");
 		require(validators[addr].weight > 0, "Validator not qualified to sign");
 		_;
 	}
