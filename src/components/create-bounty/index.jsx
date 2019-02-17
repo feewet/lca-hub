@@ -46,12 +46,16 @@ const CBStageOne = ({ progress }) => (
         />
       </div>
     </form>
-    <p>
+    <p style={{ marginTop: '2.5rem' }}>
       This is a summary of your LCA. It should tell contributors the general
       problem, goal of the project, the industry of interest, and maybe a fourth
       thing.
     </p>
-    <Button className={createBountyStyles.Button} onClick={progress}>
+    <Button
+      style={{ marginTop: '1.5rem' }}
+      className={createBountyStyles.Button}
+      onClick={progress}
+    >
       Next: Define Scope
     </Button>
   </div>
@@ -199,10 +203,7 @@ const CBStageFour = () => (
     <h2>Difficulty</h2>
     <p>{lca.difficulty}</p>
     <hr />
-    <Link
-      to="/"
-      className={createBountyStyles.Link}
-    >
+    <Link to="/" className={createBountyStyles.Link}>
       Create LCA
     </Link>
   </div>
