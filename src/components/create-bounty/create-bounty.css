@@ -65,3 +65,16 @@
   width: 9rem;
   margin-right: 2rem;
 }
+
+.Link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  position: relative;
+  padding: 2rem;
+  top: 4rem;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+  background-color: white;
+  color: black;
+}

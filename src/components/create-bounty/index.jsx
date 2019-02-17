@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import createBountyStyles from './create-bounty.css';
 
 const createBountyClasses = () => `${createBountyStyles.CreateBounty}`;
@@ -182,7 +183,7 @@ const CBStageThree = ({ progress }) => (
   </div>
 );
 
-const CBStageFour = ({ progress }) => (
+const CBStageFour = () => (
   <div className={createBountyClasses()}>
     <h1 className={titleClasses()}>Preview</h1>
     <hr />
@@ -198,6 +199,12 @@ const CBStageFour = ({ progress }) => (
     <h2>Difficulty</h2>
     <p>{lca.difficulty}</p>
     <hr />
+    <Link
+      to="/"
+      className={createBountyStyles.Link}
+    >
+      Create LCA
+    </Link>
   </div>
 );
 
