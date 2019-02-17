@@ -54,3 +54,12 @@
   font-size: 1.2em;
   color: whitesmoke;
 }
+
+.DifficultyButton {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  height: 4rem;
+  width: 9rem;
+  margin-right: 2rem;
+}

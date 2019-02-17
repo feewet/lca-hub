@@ -11,6 +11,13 @@ const subtitleClasses = () => `${createBountyStyles.Subtitle}`;
 
 const summaryClasses = () => `${createBountyStyles.TitleInput}`;
 
+let lca = {
+  goal: 'No goal',
+  scope: 'No scope',
+  reward: 'No reward',
+  difficulty: 'No difficulty',
+};
+
 // TODO: use this method...
 // <ReactSVG src="../../../resources/progress1.svg" />
 
@@ -31,6 +38,7 @@ const CBStageOne = ({ progress }) => (
       <div>Goal&nbsp;&nbsp;</div>
       <div>
         <input
+          id="goal"
           className={createBountyStyles.GoalInput}
           type="text"
           name="name"
@@ -56,6 +64,7 @@ const CBStageTwo = ({ progress }) => (
       <div>Scope&nbsp;&nbsp;</div>
       <div>
         <input
+          id="scope"
           className={createBountyStyles.ScopeInput}
           type="text"
           name="name"
@@ -73,6 +82,63 @@ const CBStageTwo = ({ progress }) => (
   </div>
 );
 
+class DifficultySelector extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { selected: 0 };
+  }
+
+  handleChange(s) {
+    switch (s) {
+      case 1:
+        lca.difficulty = 'Basic';
+        break;
+      case 2:
+        lca.difficulty = 'Moderate';
+        break;
+      case 3:
+        lca.difficulty = 'More Difficult';
+        break;
+      default:
+        break;
+    }
+    this.setState({ selected: s });
+  }
+
+  render() {
+    const { selected } = this.state;
+    const c1 = selected === 1 ? '#3d9b34' : 'whitesmoke';
+    const c2 = selected === 2 ? '#3d9b34' : 'whitesmoke';
+    const c3 = selected === 3 ? '#3d9b34' : 'whitesmoke';
+    return (
+      <div>
+        <Button
+          className={createBountyStyles.DifficultyButton}
+          style={{ backgroundColor: c1 }}
+          onClick={() => this.handleChange(1)}
+        >
+          Basic
+        </Button>
+        <Button
+          className={createBountyStyles.DifficultyButton}
+          style={{ backgroundColor: c2 }}
+          onClick={() => this.handleChange(2)}
+        >
+          Moderate
+        </Button>
+        <Button
+          className={createBountyStyles.DifficultyButton}
+          style={{ backgroundColor: c3 }}
+          onClick={() => this.handleChange(3)}
+        >
+          More Difficult
+        </Button>
+      </div>
+    );
+  }
+}
+
 const CBStageThree = ({ progress }) => (
   <div className={createBountyClasses()}>
     <h1 className={titleClasses()}>Reward</h1>
@@ -85,15 +151,41 @@ const CBStageThree = ({ progress }) => (
       <div style={{ marginTop: '2rem' }}>Amount (DAI)&nbsp;&nbsp;</div>
       <div>
         <input
+          id="reward"
           className={createBountyStyles.AmountInput}
           type="text"
           name="name"
         />
       </div>
     </form>
+    <div style={{ marginTop: '2rem' }}>
+      <span>Difficulty&nbsp;&nbsp;</span>
+      <DifficultySelector />
+    </div>
+    <p>
+      Please note that due to the fluctuating cost of gas fees on the Ethereum
+      network that the amount of deposited DAI will exceed the value of the
+      reward. Any excess DAI will be returned to your wallet once the
+      transaction is confirmed.
+    </p>
     <Button className={createBountyStyles.Button} onClick={progress}>
       Next: Finalize
     </Button>
+  </div>
+);
+
+const CBStageFour = ({ progress }) => (
+  <div className={createBountyClasses()}>
+    <h1 className={titleClasses()}>Preview</h1>
+    <hr />
+    <h2>Goal</h2>
+    <p>{lca.goal}</p>
+    <h2>Scope</h2>
+    <p>{lca.scope}</p>
+    <h2>Reward</h2>
+    <p>{lca.reward}</p>
+    <h2>Difficulty</h2>
+    <p>{lca.difficulty}</p>
   </div>
 );
 
@@ -113,11 +205,34 @@ class CreateBounty extends React.Component {
     const { stage } = this.state;
     switch (stage) {
       case 1:
-        return <CBStageOne progress={this.handleProgress} />;
+        return (
+          <CBStageOne
+            progress={() => {
+              lca.goal = document.getElementById('goal').value;
+              this.handleProgress();
+            }}
+          />
+        );
       case 2:
-        return <CBStageTwo progress={this.handleProgress} />;
+        return (
+          <CBStageTwo
+            progress={() => {
+              lca.scope = document.getElementById('scope').value;
+              this.handleProgress();
+            }}
+          />
+        );
       case 3:
-        return <CBStageThree progress={this.handleProgress} />;
+        return (
+          <CBStageThree
+            progress={() => {
+              lca.reward = document.getElementById('reward').value;
+              this.handleProgress();
+            }}
+          />
+        );
+      case 4:
+        return <CBStageFour progress={this.handleProgress} />;
       default:
         return <div />;
     }
@@ -140,4 +255,12 @@ CBStageTwo.propTypes = {
 
 CBStageThree.propTypes = {
   progress: PropTypes.func,
+};
+
+CBStageFour.propTypes = {
+  progress: PropTypes.func,
+};
+
+DifficultySelector.propTypes = {
+  selected: PropTypes.number,
 };
