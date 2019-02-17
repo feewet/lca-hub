@@ -41,7 +41,7 @@ contract FlightFund {
 	// Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function certify(address validator) public onlyChairperson() {
-		require(validators[validator] > 0, "This address is already validated.");
+		require(validators[validator] != 0, "This address is already validated.");
         validators[validator].weight = 1;
         emit Certify(validator);
     }
@@ -62,7 +62,7 @@ contract FlightFund {
 	{
 		uint256 size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].validators[size] = validators[size].weight;
+		reports[report].validators[size] = validators[addr].weight;
 		// return validators length
 		emit ValidateReport(addr, report);
 	}
@@ -74,7 +74,7 @@ contract FlightFund {
 	{
 		uint256 size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].refuters[size] = validators[size].weight;
+		reports[report].refuters[size] = validators[addr].weight;
 		emit DisputeReport(addr, report);
 	}
 
@@ -127,7 +127,7 @@ contract FlightFund {
 	}
 
 	modifier reportExists(bytes32 report) {
-		require (reports[report].reportHash > bytes32(0x0), "Invalid report hash");
+		require (reports[report].reportHash != bytes32(0x0), "Invalid report hash");
 		_;
 	}
 }
