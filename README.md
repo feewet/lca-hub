@@ -1,3 +1,15 @@
+# Judges
+
+Please review the following documents: 
+
+Flight Fund Wireframe.pdf
+FlightFund.sol
+
+### Running the Demo
+
+npm install
+npm start
+
 # Description
 
 The goal of this project is to help engineers reach consensus about sustainability goals and product lifecycles. Contributors are incentivised to validate lifecycle assessments and share them with the public.
