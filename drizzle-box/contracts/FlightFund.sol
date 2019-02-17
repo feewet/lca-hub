@@ -111,6 +111,7 @@ contract FlightFund {
 		require (reports[reportHash].reportHash == bytes32(0x0), "Report already submitted");
 		reports[reportHash] = Report(msg.sender, reportHash, msg.value, false, false,
 			numRequiredValidators, new address[](8), new address[](8));
+		//emit CreateReportBounty
 	}
 
 	// Submit a report (permissionless)
