@@ -61,7 +61,7 @@ const CBStageTwo = ({ progress }) => (
     <h1 className={titleClasses()}>Definition</h1>
     <hr />
     <form>
-      <div>Scope&nbsp;&nbsp;</div>
+      <div style={{ marginTop: '2rem' }}>Scope&nbsp;&nbsp;</div>
       <div>
         <input
           id="scope"
@@ -71,12 +71,16 @@ const CBStageTwo = ({ progress }) => (
         />
       </div>
     </form>
-    <p>
+    <p style={{ marginTop: '2rem' }}>
       This is a detailed description of your LCA requirements. It should note
       the required deliverables, specify variables, define project scope, etc
       etc etc.
     </p>
-    <Button className={createBountyStyles.Button} onClick={progress}>
+    <Button
+      style={{ marginTop: '1.5rem' }}
+      className={createBountyStyles.Button}
+      onClick={progress}
+    >
       Next: Set Reward
     </Button>
   </div>
