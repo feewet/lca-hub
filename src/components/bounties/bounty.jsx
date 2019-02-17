@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import LCAStyle from './bounty.css';
 
@@ -18,12 +19,14 @@ class Bounty extends React.Component {
   render() {
     const { verified, address, owner, timeEstimate } = this.state;
     return (
-      <Button className={buttonClasses()}>
-        <div className={statusClasses(verified)}>&nbsp;</div>
-        <div>{address}</div>
-        <div>{owner}</div>
-        <div>{timeEstimate}</div>
-      </Button>
+      <Link to="/lca-01">
+        <Button className={buttonClasses()}>
+          <div className={statusClasses(verified)}>&nbsp;</div>
+          <div>{address}</div>
+          <div>{owner}</div>
+          <div>{timeEstimate}</div>
+        </Button>
+      </Link>
     );
   }
 }

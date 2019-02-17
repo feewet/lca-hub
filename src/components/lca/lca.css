@@ -1,0 +1,14 @@
+.LCA {
+  width: 50%;
+  margin: auto;
+  color: whitesmoke;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Button {
+  background-color: whitesmoke;
+  margin-top: 2rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 10rem;
+}
