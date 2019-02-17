@@ -166,13 +166,17 @@ const CBStageThree = ({ progress }) => (
       <span>Difficulty&nbsp;&nbsp;</span>
       <DifficultySelector />
     </div>
-    <p>
+    <p style={{ marginTop: '2rem' }}>
       Please note that due to the fluctuating cost of gas fees on the Ethereum
       network that the amount of deposited DAI will exceed the value of the
       reward. Any excess DAI will be returned to your wallet once the
       transaction is confirmed.
     </p>
-    <Button className={createBountyStyles.Button} onClick={progress}>
+    <Button
+      style={{ marginTop: '1.25rem' }}
+      className={createBountyStyles.Button}
+      onClick={progress}
+    >
       Next: Finalize
     </Button>
   </div>
@@ -184,12 +188,16 @@ const CBStageFour = ({ progress }) => (
     <hr />
     <h2>Goal</h2>
     <p>{lca.goal}</p>
+    <hr />
     <h2>Scope</h2>
     <p>{lca.scope}</p>
+    <hr />
     <h2>Reward</h2>
     <p>{lca.reward}</p>
+    <hr />
     <h2>Difficulty</h2>
     <p>{lca.difficulty}</p>
+    <hr />
   </div>
 );
 
