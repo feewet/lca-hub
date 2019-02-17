@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from 'components/nav-bar';
-import LCAs from 'components/lcas';
+import LCAs from 'components/bounties';
 import LCA from 'components/lca';
 import Request from 'components/request';
 import Home from 'components/home';
