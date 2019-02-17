@@ -30,12 +30,12 @@ const Home = () => (
         </p>
         <Link
           className={linkClasses()}
-          style={{ left: '30%' }}
+          style={{ left: '29%' }}
           to="/request-bounty"
         >
           Create Bounty
         </Link>
-        <Link className={linkClasses()} style={{ left: '50%' }} to="/lcas">
+        <Link className={linkClasses()} style={{ left: '48%' }} to="/lcas">
           View Bounties
         </Link>
       </Col>
