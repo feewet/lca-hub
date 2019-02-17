@@ -26,7 +26,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 ### Verification
 
-* Engineers will sign up and have their qualifications and identity verified and linked to their ethereum address. Smart contract maps valid addresses to True.
+* Engineers will sign up and have their qualifications and identity verified and linked to their ethereum address.
 
 * Verified engineers are able to manually validate LCAs by signing them.
 
@@ -46,7 +46,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 * Once an Bounty has been verified enough times, the remaining bounty is paid to the submitter and the Bounty is considered valid.
 
-* Valid LCAs are posted publicly on ipfs and made available through a website.
+* Valid LCAs are posted publicly on ipfs and made available through our service.
 
 # Future Considerations
 
