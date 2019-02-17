@@ -2,7 +2,7 @@
   position: relative;
   width: 50%;
   margin: auto;
-  color: whitesmoke;
+  color: black;
   font-family: SF Pro Display, sans-serif;
 }
 
@@ -44,23 +44,26 @@
 }
 
 .Button {
+  border-radius: 2%;
   cursor: pointer;
   outline: 0;
   border: 0;
-  background-color: #3d9b34;
+  background-color: lightgray;
   height: 4rem;
   width: 9rem;
   font-weight: bold;
   font-size: 1.2em;
-  color: whitesmoke;
+  color: black;
 }
 
 .DifficultyButton {
+  border-color: lightgray;
+  border-radius: 2%;
+  background-color: lightgray;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   outline: 0;
-  border: 0;
   height: 4rem;
   width: 9rem;
   margin-right: 2rem;
@@ -75,6 +78,6 @@
   text-decoration: none;
   cursor: pointer;
   outline: 0;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: whitesmoke;
 }
