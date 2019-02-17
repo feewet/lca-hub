@@ -46,7 +46,7 @@ The platform will be built on an Ethereum dApp using IPFS for decentralized host
 
 * Funders can upload a goal and scope definition and attach a bounty. Funders specify the number of validators required before 
 
-### Bounty Submission
+### Report Submission
 
 * Contributors can apply to work on any open LCAs. Once the funder approves the contributor, they can begin to work on the report.
 
