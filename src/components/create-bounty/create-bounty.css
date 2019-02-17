@@ -56,6 +56,8 @@
 }
 
 .DifficultyButton {
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   outline: 0;
   border: 0;
