@@ -1,9 +1,9 @@
 .Paragraph {
   position: relative;
+  font-family: 'Montserrat', sans-serif;
   top: 5rem;
   width: 50%;
   margin: auto;
-  font-family: SF Pro Display, serif;
   line-height: normal;
   font-size: 20px;
   text-align: justify;
@@ -22,6 +22,7 @@
 }
 
 .Link {
+  font-family: 'Montserrat', sans-serif;
   position: relative;
   padding: 2rem;
   top: 12rem;
