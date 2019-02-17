@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import LCA from './lca';
+import Bounty from './bounty';
 import mockLCAs from './mock-lcas';
-import LCAStyles from './lca.css';
+import LCAStyles from './bounty.css';
 
 const LCAsClasses = () => `${LCAStyles.LCAs}`;
 
@@ -13,7 +13,7 @@ const titleClasses = () => `${LCAStyles.Title}`;
 const LCAItem = i => {
   const lca = mockLCAs[i];
   return (
-    <LCA
+    <Bounty
       address={lca.address}
       verified={lca.verified}
       owner={lca.owner}

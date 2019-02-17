@@ -31,7 +31,7 @@ const Home = () => (
         <Link
           className={linkClasses()}
           style={{ left: '29%' }}
-          to="/request-bounty"
+          to="/create-bounty"
         >
           Create Bounty
         </Link>

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import LCAStyle from './lca.css';
+import LCAStyle from './bounty.css';
 
 const buttonClasses = () => `${LCAStyle.Button}`;
 
 const statusClasses = v =>
   v ? `${LCAStyle.StatusVerified}` : `${LCAStyle.StatusUnverified}`;
 
-class LCA extends React.Component {
+class Bounty extends React.Component {
   constructor(props) {
     super(props);
     const { verified, address, owner, timeEstimate } = props;
@@ -28,9 +28,9 @@ class LCA extends React.Component {
   }
 }
 
-export default LCA;
+export default Bounty;
 
-LCA.propTypes = {
+Bounty.propTypes = {
   verified: PropTypes.bool,
   address: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
