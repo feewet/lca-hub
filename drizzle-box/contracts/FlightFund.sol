@@ -4,13 +4,13 @@ contract FlightFund {
 
 	event Certify(address validator);
 	event RevokeCertification(address validator);
-	event ValidateReport(address validator, bytes32 report);
-	event DisputeReport(address validator, bytes32 report);
+	event ValidateReport(address validator, bytes32 reportHash);
+	event DisputeReport(address validator, bytes32 reportHash);
 	event CreateReportBounty();
-	event SubmitReport(address submittor, bytes32 reportHash, bool isValid, uint8 _numRequiredValidators);
-	event RemoveReport(address addr, bytes32 report);
+	event SubmitReport(address submittor, bytes32 reportHash);
+	event RemoveReport(address addr, bytes32 reportHash);
 	event SetBounty();
-	event PayBounty(address addr, address[] validators, bytes32 report);
+	event PayBounty(address addr, address[] validators, bytes32 reportHash);
 
 	// Represents a single validator.
 	struct Validator {
@@ -21,8 +21,10 @@ contract FlightFund {
 	// Report Structure
 	struct Report {
 		// ------ADD NAME------
-		address creator; // creator (owner)
+		address payable creator; // creator (owner)
 		bytes32 reportHash; // hash of report on ipfs
+		uint256 bounty;
+		bool isSubmitted;
 		bool isValid;
 		uint8 numRequiredValidators;
 		address[] validators;
@@ -37,6 +39,31 @@ contract FlightFund {
 
 	// mapping from addresses to validators
 	mapping(address => Validator) public validators;
+
+	// only Chairperson access
+	modifier onlyChairperson() {
+		require(msg.sender == chairperson, 
+			"Only chairperson can give right to validate.");
+		_;
+	}
+
+	// ensures only validators can access
+	modifier onlyValidator(address addr) {
+		require(validators[addr].addr != address(0x0), "This address is not authorized to validate");
+		require(validators[addr].weight > 0, "Validator not qualified to sign");
+		_;
+	}
+
+	// Ensures report exists
+	modifier reportExists(bytes32 reportHash) {
+		require (reports[reportHash].reportHash != bytes32(0x0), "Invalid report hash");
+		_;
+	}
+
+	// Ensures no double signing
+	modifier notSigned(address addr, bytes32 reportHash) {
+		_;
+	}
 
 	// Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
@@ -56,79 +83,50 @@ contract FlightFund {
     }
 
     // takes in the hash of a document and allows signing
-	function validateReport(address addr, bytes32 report) public 
-		onlyValidator(addr)
-		reportExists(report)
+	function validateReport(bytes32 reportHash) public
+		onlyValidator(msg.sender)
+		reportExists(reportHash)
 	{
-		uint256 size = reports[report].validators.length;
+		uint256 size = reports[reportHash].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].validators[size] = addr;
+		reports[reportHash].validators[size] = msg.sender;
 		// return validators length
-		emit ValidateReport(addr, report);
+		emit ValidateReport(msg.sender, reportHash);
 	}
 
 	// takes in an address and the hash of a document and adds a dispute to the report
-	function disputeReport(address addr, bytes32 report) public 
-		onlyValidator(addr)
-		reportExists(report)
+	function disputeReport(bytes32 reportHash) public
+		onlyValidator(msg.sender)
+		reportExists(reportHash)
+		notSigned(msg.sender, reportHash)
 	{
-		uint256 size = reports[report].validators.length;
+		uint256 size = reports[reportHash].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].refuters[size] = addr;
-		emit DisputeReport(addr, report);
+		reports[reportHash].refuters[size] = msg.sender;
+		emit DisputeReport(msg.sender, reportHash);
 	}
 
 	// takes an address, report hash, and bounty and locks (permissionless)
-	function createReportBounty(address creator, bytes32 report, uint8 bounty) public {
-		// lock bounty in smart contract
-		
+	function createReportBounty(bytes32 reportHash, uint8 numRequiredValidators) public payable {
+		require (reports[reportHash].reportHash == bytes32(0x0), "Report already submitted");
+		reports[reportHash] = Report(msg.sender, reportHash, msg.value, false, false,
+			numRequiredValidators, new address[](8), new address[](8));
 	}
 
 	// Submit a report (permissionless)
-	function submitReport(address submittor, bytes32 reportHash, uint8 _numRequiredValidators) public {
-		bytes32 reportHash = reportHash;
-		address creator = submittor;
-		bool isValid = false;
-		uint8 numRequiredValidators = _numRequiredValidators;
-		reports[reportHash] = Report(creator, reportHash, isValid, 
-			numRequiredValidators, new address[](8), new address[](8));
-		emit SubmitReport(creator, reportHash, isValid, numRequiredValidators);
+	function submitReport(bytes32 reportHash) public reportExists(reportHash) {
+		reports[reportHash].reportHash = reportHash;
+		reports[reportHash].isSubmitted = true;
+		emit SubmitReport(msg.sender, reportHash);
 	}
 
 	// Remove report and release bounty
-	function removeReport(address addr, bytes32 report) public {
-		require (reports[report].creator == addr || addr == chairperson,
+	function removeReport(bytes32 reportHash) public {
+		require (reports[reportHash].creator == msg.sender || msg.sender == chairperson,
 			"Only report creator or admin can delete reports");
-		delete reports[report];
-		// !!!!! RELEASE BOUNTY !!!!!!
-		emit RemoveReport(addr, report);
-	}
-
-	// pay bounty to report submittor and validators
-	function payBounty(address addr, bytes32 report) public {
-		require(reports[report].isValid == false, "Report already valid");
-		//for (reports[report].validators;
-		
-		// !!! PAY BOUNTY !!!
-		reports[report].isValid = true;
-		emit PayBounty(addr, reports[report].validators, report);
-	}
-
-	// only Chairperson
-	modifier onlyChairperson() {
-		require(msg.sender == chairperson, 
-			"Only chairperson can give right to validate.");
-		_;
-	}
-
-	modifier onlyValidator(address addr) {
-		require(validators[addr].addr != address(0x0), "This address is not authorized to validate");
-		require(validators[addr].weight > 0, "Validator not qualified to sign");
-		_;
-	}
-
-	modifier reportExists(bytes32 report) {
-		require (reports[report].reportHash != bytes32(0x0), "Invalid report hash");
-		_;
+		// RELEASE BOUNTY
+		reports[reportHash].creator.transfer(reports[reportHash].bounty);
+		delete reports[reportHash];
+		emit RemoveReport(msg.sender, reportHash);
 	}
 }
