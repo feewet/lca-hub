@@ -6,10 +6,9 @@ contract FlightFund {
 	event RevokeCertification(address validator);
 	event ValidateReport(address validator, bytes32 reportHash);
 	event DisputeReport(address validator, bytes32 reportHash);
-	event CreateReportBounty();
+	event CreateReportBounty(address sender, bytes32 reportHash, uint256 bounty, uint numRequiredValidators);
 	event SubmitReport(address submittor, bytes32 reportHash);
 	event RemoveReport(address addr, bytes32 reportHash);
-	event SetBounty();
 	event PayBounty(address addr, address[] validators, bytes32 reportHash);
 
 	// Represents a single validator.
@@ -20,7 +19,6 @@ contract FlightFund {
 
 	// Report Structure
 	struct Report {
-		// ------ADD NAME------
 		address payable creator; // creator (owner)
 		bytes32 reportHash; // hash of report on ipfs
 		uint256 bounty;
@@ -111,7 +109,7 @@ contract FlightFund {
 		require (reports[reportHash].reportHash == bytes32(0x0), "Report already submitted");
 		reports[reportHash] = Report(msg.sender, reportHash, msg.value, false, false,
 			numRequiredValidators, new address[](8), new address[](8));
-		//emit CreateReportBounty
+		emit CreateReportBounty(msg.sender, reportHash, msg.value, numRequiredValidators);
 	}
 
 	// Submit a report (permissionless)
