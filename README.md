@@ -60,7 +60,7 @@ There will be situations where an invalid LCA is submitted or verified engineers
 
 ### Verification Issues (Identity)
 
-Inherently, the engineer verification will need to be centralized. An administrator will need to keep track of verified engineers and manually go over new applicants' licenses. As identity on the blockchain improves, it will be possible to connect with a 
+Inherently, the engineer verification will need to be centralized. An administrator will need to keep track of verified engineers and manually go over new applicants' licenses. As identity on the blockchain improves, it will be possible to connect with a decentralized reputation system for a more thorough review and quantification of an engineer's validation.
 
 ### Privacy
 
