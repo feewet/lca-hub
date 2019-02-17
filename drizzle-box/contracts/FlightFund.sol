@@ -36,7 +36,7 @@ contract FlightFund {
 
 	// mapping from addresses to validators
 	mapping(address => Validator) public validators;
-	
+
 	// Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function certify(address validator) public onlyChairperson() {
@@ -59,7 +59,7 @@ contract FlightFund {
 		onlyValidator(addr)
 		reportExists(report)
 	{
-		uint size = eports[report].validators.length;
+		uint size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
 		reports[report].validators[size] = validators[size].weight;
 		// return validators length
@@ -71,8 +71,9 @@ contract FlightFund {
 		onlyValidator(addr)
 		reportExists(report)
 	{
+		uint size = reports[report].validators.length;
 		// store validator address -> weight mapping in report
-		reports[report].refuters[addr] = validators[addr].weight;
+		reports[report].refuters[size] = validators[size].weight;
 		emit DisputeReport(addr, report);
 	}
 
@@ -88,7 +89,7 @@ contract FlightFund {
 		address creator = submittor;
 		bool isValid = false;
 		uint8 numRequiredValidators = _numRequiredValidators;
-		reports[report] = Report(reportHash, creator, isValid, numRequiredValidators);
+		reports[reportHash] = Report(reportHash, creator, isValid, numRequiredValidators);
 		emit SubmitReport(reportHash, creator, isValid, numRequiredValidators);
 	}
 
@@ -104,7 +105,7 @@ contract FlightFund {
 	// pay bounty to report submittor and validators
 	function payBounty(address addr, bytes32 report) public {
 		require(reports[report].isValid == false, "Report already valid");
-		address[] paidValidators = reports[report].validators;
+		//for (reports[report].validators;
 
 		// !!! PAY BOUNTY !!!
 		reports[report].isValid = true;
