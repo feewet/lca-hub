@@ -20,6 +20,7 @@ contract FlightFund {
 
 	// Report Structure
 	struct Report {
+		// ------ADD NAME------
 		bytes32 reportHash; // hash of report on ipfs
 		address creator; // creator (owner)
 		bool isValid;
@@ -119,7 +120,7 @@ contract FlightFund {
 		_;
 	}
 
-	modifier onlyValidator(uint8 addr) {
+	modifier onlyValidator(address addr) {
 		require(validators[addr] > 0, "This address is not authorized to validate");
 		require(validators[addr].weight > 0, "Validator not qualified to sign");
 		_;
