@@ -9,8 +9,6 @@ const headingClasses = () => `${homeStyles.Heading}`;
 
 const linkClasses = () => `${homeStyles.Link}`;
 
-const linkRowClasses = () => `${homeStyles.LinkRow}`;
-
 const Home = () => (
   <div>
     <Row>

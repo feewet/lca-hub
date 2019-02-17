@@ -1,7 +1,56 @@
-.Title {
+.CreateBounty {
   position: relative;
+  width: 50%;
+  margin: auto;
+  color: whitesmoke;
   font-family: SF Pro Display, sans-serif;
+}
+
+.Title {
+  top: 2.5rem;
+  line-height: normal;
+  font-size: 38px;
+}
+
+.Subtitle {
+  top: 2.5rem;
   line-height: normal;
   font-size: 26px;
+}
+
+.TitleInput {
+  width: 40rem;
+  height: 3rem;
+}
+
+.GoalInput {
+  width: 40rem;
+  height: 6rem;
+}
+
+.ScopeInput {
+  width: 40rem;
+  height: 10rem;
+}
+
+.AmountInput {
+  width: 40rem;
+  height: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Form {
+  margin-top: 2rem;
+}
+
+.Button {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: #3d9b34;
+  height: 4rem;
+  width: 9rem;
+  font-weight: bold;
+  font-size: 1.2em;
   color: whitesmoke;
 }

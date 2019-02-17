@@ -33,6 +33,7 @@
     "react-hamburger-menu": "^1.1.1",
     "react-hot-loader": "4.3.12",
     "react-router-dom": "^4.3.1",
+    "react-svg": "^7.2.6",
     "react-table-view": "^1.0.0"
   },
   "resolutions": {
