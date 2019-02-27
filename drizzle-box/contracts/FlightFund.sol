@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 contract FlightFund {
 
+	// events
 	event Certify(address validator);
 	event RevokeCertification(address validator);
 	event ValidateReport(address validator, bytes32 reportHash);
