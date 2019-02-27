@@ -19,6 +19,7 @@ contract FlightFund {
 
 	// Report Structure
 	struct Report {
+		// ------ADD NAME------
 		address payable creator; // creator (owner)
 		bytes32 reportHash; // hash of report on ipfs
 		uint256 bounty;
